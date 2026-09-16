@@ -17,7 +17,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <div className="w-14 h-8 flex items-center justify-around rounded-full bg-[#2e2f33]">
+    <div className="flex h-8 w-14 items-center justify-around rounded-full bg-[#2e2f33]">
       <button
         type="button"
         className={`${activeCircleStyles} ${theme == "light" ? "bg-white" : ""}`}
