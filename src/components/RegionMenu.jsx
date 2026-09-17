@@ -1,4 +1,5 @@
 import Select from "react-select";
+import { filterCountriesByRegion } from "../utils/countryFilters";
 
 const options = [
   { value: "all regions", label: "All regions" },
@@ -8,10 +9,16 @@ const options = [
   { value: "oceania", label: "Oceania" },
 ];
 
-export function RegionMenu() {
+export function RegionMenu({ countries, setCountries }) {
+  function handleRegionChange(selectedOption) {
+    const selectedRegion = selectedOption?.value ?? "all regions";
+    setCountries(filterCountriesByRegion(countries, selectedRegion));
+  }
+
   return (
     <Select
       defaultValue={options[0]}
+      onChange={handleRegionChange}
       options={options}
       classNames={{
         input: () => "dark:!text-gray-100",

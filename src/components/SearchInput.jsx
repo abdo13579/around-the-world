@@ -1,6 +1,17 @@
-export function SearchInput() {
+export function SearchInput({ countrieslist, setCountries }) {
+  function handleSearch(event) {
+    event.preventDefault();
+    const searchTerm = event.target.search.value.toLowerCase();
+    const filteredCountries =
+      !searchTerm || searchTerm === ""
+        ? countrieslist
+        : countrieslist.filter((country) =>
+            country.name.toLowerCase().includes(searchTerm),
+          );
+    setCountries(filteredCountries);
+  }
   return (
-    <form className="relative flex-1">
+    <form className="relative flex-1" onSubmit={handleSearch}>
       <div className="absolute top-5 left-8">
         <svg
           width="18"
